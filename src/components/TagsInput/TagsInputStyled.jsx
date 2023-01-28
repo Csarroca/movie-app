@@ -1,20 +1,28 @@
 import styled from "styled-components";
 
-const InputStyled = styled.div`
+const TagsInputStyled = styled.div`
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   font-weight: bold;
 
-  .input-container {
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-    width: 213px;
+  .close {
     color: ${({ theme }) => theme.colors.brand.primary};
+    border: none;
+    background-color: unset;
+    cursor: pointer;
   }
 
+  .tag-item {
+    color: ${({ theme }) => theme.colors.brand.primary};
+  }
   input {
     all: unset;
     cursor: pointer;
+    width: 200px;
+    color: ${({ theme }) => theme.colors.brand.primary};
+
     padding: 5px;
     border: 1px solid ${({ theme }) => theme.colors.neutral.secundaryText};
     border-radius: 5%;
@@ -28,4 +36,4 @@ const InputStyled = styled.div`
   }
 `;
 
-export default InputStyled;
+export default TagsInputStyled;
