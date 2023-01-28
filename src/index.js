@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import App from "./App";
-import GlobalStyle from "./styles/Theme/GlobalStyle/GlobalStyle";
+import GlobalStyle from "./styles/GlobalStyle/GlobalStyle";
 import Theme from "./styles/Theme/Theme";
 
 const container = document.getElementById("root");
