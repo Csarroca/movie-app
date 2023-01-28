@@ -1,6 +1,6 @@
 import HeaderStyled from "./HeaderStyled";
 
-function Header() {
+const Header = () => {
   return (
     <HeaderStyled>
       <h1 className="header-title">Movies App</h1>
@@ -13,6 +13,6 @@ function Header() {
       />
     </HeaderStyled>
   );
-}
+};
 
 export default Header;
