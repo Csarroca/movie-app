@@ -10,7 +10,7 @@ const HeaderStyled = styled.header`
 
   .header-title {
     color: ${({ theme }) => theme.colors.brand.primary};
-    font-size: 20px;
+    font-size: 2rem;
   }
 `;
 
