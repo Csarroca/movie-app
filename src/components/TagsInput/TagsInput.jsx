@@ -7,7 +7,8 @@ function TagsInput() {
   function handleKeyDown(event) {
     if (event.key !== "Enter") return;
     const value = event.target.value;
-    if (!value.trim()) return;
+    if (!value.trim().toLowerCase() || tags.includes(value.toLowerCase()))
+      return;
     setTags([...tags, value]);
     event.target.value = "";
   }
@@ -29,6 +30,7 @@ function TagsInput() {
       <input
         onKeyDown={handleKeyDown}
         type="text"
+        w
         placeholder="Type some movie genre"
       />
     </TagsInputStyled>
