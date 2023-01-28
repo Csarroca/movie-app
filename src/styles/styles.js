@@ -2,6 +2,7 @@ const styles = {
   colors: {
     brand: {
       primary: "#3a61b6",
+      secundary: "#104681 ",
     },
     neutral: {
       primaryText: "#17202A",
