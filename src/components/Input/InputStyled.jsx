@@ -16,8 +16,8 @@ const InputStyled = styled.div`
     all: unset;
     cursor: pointer;
     padding: 5px;
-    border: 1px solid ${({ theme }) => theme.colors.neutral.secundaryText};
-    border-radius: 5%;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 3px;
     font-size: 10px;
     font-weight: lighter;
   }

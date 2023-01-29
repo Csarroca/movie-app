@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const FormStyled = styled.form`
+  padding: 10px;
+
   .form-container {
     display: flex;
     flex-direction: column;
