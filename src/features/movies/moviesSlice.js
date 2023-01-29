@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  movies: [{ name: "lala", genres: ["horror", "lala"], watched: true, id: 2 }],
+  movies: [],
   isLoading: false,
   id: 0,
   error: null,
@@ -24,10 +24,17 @@ export const moviesSlice = createSlice({
       );
       state.movies.sort((movie1, movie2) => movie1.watched - movie2.watched);
     },
+    setIsLoading: (state, { payload }) => {
+      state.isLoading = payload;
+    },
   },
 });
 
-export const { addMovieToStore, deleteMovieFromStore, setMovieWatched } =
-  moviesSlice.actions;
+export const {
+  addMovieToStore,
+  deleteMovieFromStore,
+  setMovieWatched,
+  setIsLoading,
+} = moviesSlice.actions;
 
 export const moviesReducer = moviesSlice.reducer;

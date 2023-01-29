@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import Searcher from "../../components/Filter/Searcher";
 import Form from "../../components/Form/Form";
+import Loader from "../../components/Loader/Loader";
 import MovieCardList from "../../components/MovieCardList/MovieCardList";
 
 const HomePage = () => {
-  const { movies } = useSelector((state) => state.movies);
+  const { movies, isLoading } = useSelector((state) => state.movies);
   const [search, setSearch] = useState("");
 
   const searcher = (e) => {
@@ -25,7 +26,7 @@ const HomePage = () => {
         searcher={searcher}
         search={search}
       />
-      <MovieCardList list={list} />
+      {isLoading ? <Loader /> : <MovieCardList list={list} />}
     </>
   );
 };
