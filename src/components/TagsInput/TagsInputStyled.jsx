@@ -34,6 +34,14 @@ const TagsInputStyled = styled.div`
     border: 2px solid ${({ theme }) => theme.colors.brand.primary};
     outline: none;
   }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    color: ${({ theme }) => theme.colors.brand.primary};
+  }
 `;
 
 export default TagsInputStyled;
