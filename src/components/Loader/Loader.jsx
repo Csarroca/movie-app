@@ -1,15 +1,15 @@
-const Loader = ({ isLoading }) => {
+import LoaderStyled from "./LoaderStyled";
+
+const Loader = () => {
   return (
-    isLoading && (
-      <div className="loading-indicator">
-        <img
-          src="/images/spinner.gif"
-          alt="Loading..."
-          height={40}
-          width={40}
-        />
-      </div>
-    )
+    <LoaderStyled>
+      <img
+        src="/images/spinner.gif"
+        alt="Loading..."
+        height={200}
+        width={200}
+      />
+    </LoaderStyled>
   );
 };
 
