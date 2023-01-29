@@ -25,7 +25,7 @@ const TagsInputStyled = styled.div`
     color: ${({ theme }) => theme.colors.brand.primary};
 
     padding: 5px;
-    border: 1px solid ${({ theme }) => theme.colors.neutral.secundaryText};
+    border: 1px solid rgba(0, 0, 0, 0.16);
     border-radius: 5%;
     font-size: 10px;
     font-weight: lighter;
