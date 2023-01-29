@@ -12,10 +12,11 @@ const TagsInputStyled = styled.div`
     border: none;
     background-color: unset;
     cursor: pointer;
+    margin-left: 10px;
   }
 
-  .tag-item {
-    color: ${({ theme }) => theme.colors.brand.primary};
+  .text {
+    font-weight: lighter;
   }
   input {
     all: unset;
