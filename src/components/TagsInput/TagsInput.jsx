@@ -1,25 +1,26 @@
 import { useState } from "react";
 import TagsInputStyled from "./TagsInputStyled";
 
-function TagsInput() {
-  const [tags, setTags] = useState([]);
+const TagsInput = ({ placeholder, selectedTags, setSelectedTags }) => {
+  const [input, setInput] = useState("");
 
-  function handleKeyDown(event) {
+  const handleKeyDown = (event) => {
     if (event.key !== "Enter") return;
     const value = event.target.value;
-    if (!value.trim().toLowerCase() || tags.includes(value.toLowerCase()))
+    if (!value.trim().toLowerCase() || input.includes(value.toLowerCase()))
       return;
-    setTags([...tags, value]);
+    setInput(value.trim().toLowerCase());
+    setSelectedTags([...selectedTags, value.trim().toLowerCase()]);
     event.target.value = "";
-  }
+  };
 
-  function removeTag(index) {
-    setTags(tags.filter((el, i) => i !== index));
-  }
+  const removeTag = (index) => {
+    setSelectedTags(selectedTags.filter((el, i) => i !== index));
+  };
 
   return (
     <TagsInputStyled className="tags-input-container">
-      {tags.map((tag, index) => (
+      {selectedTags.map((tag, index) => (
         <div className="tag-item" key={index}>
           <span className="text">{tag}</span>
           <span className="close" onClick={() => removeTag(index)}>
@@ -27,14 +28,16 @@ function TagsInput() {
           </span>
         </div>
       ))}
-      <input
-        onKeyDown={handleKeyDown}
-        type="text"
-        w
-        placeholder="Type some movie genre"
-      />
+      <label className="input-container">
+        Movies genres
+        <input
+          onKeyDown={handleKeyDown}
+          type="text"
+          placeholder={placeholder}
+        />
+      </label>
     </TagsInputStyled>
   );
-}
+};
 
 export default TagsInput;
