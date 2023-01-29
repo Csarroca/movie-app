@@ -19,6 +19,7 @@ const Form = () => {
       watched: false,
     };
     dispatch(createMovie(movie));
+    setInputName("");
   };
 
   return (
