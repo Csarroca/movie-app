@@ -5,13 +5,24 @@ const TagsInput = ({ placeholder, selectedTags, setSelectedTags }) => {
   const [input, setInput] = useState("");
 
   const handleKeyDown = (event) => {
-    if (event.key !== "Enter") return;
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (
+        !input.trim().toLowerCase() ||
+        selectedTags.includes(input.trim().toLowerCase())
+      ) {
+        setInput("");
+        return;
+      }
+
+      setSelectedTags([...selectedTags, input.trim().toLowerCase()]);
+      setInput("");
+    }
+  };
+
+  const handleOnChange = (event) => {
     const value = event.target.value;
-    if (!value.trim().toLowerCase() || input.includes(value.toLowerCase()))
-      return;
-    setInput(value.trim().toLowerCase());
-    setSelectedTags([...selectedTags, value.trim().toLowerCase()]);
-    event.target.value = "";
+    setInput(value);
   };
 
   const removeTag = (index) => {
@@ -31,6 +42,8 @@ const TagsInput = ({ placeholder, selectedTags, setSelectedTags }) => {
       <label className="input-container">
         Movies genres
         <input
+          value={input}
+          onChange={handleOnChange}
           onKeyDown={handleKeyDown}
           type="text"
           placeholder={placeholder}
