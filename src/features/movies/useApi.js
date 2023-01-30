@@ -2,12 +2,14 @@ import {
   addMovieApi,
   changeWatchedMovieApi,
   deleteMovieToApi,
+  updateMovieToApi,
 } from "../../services/movies";
 import {
   addMovieToStore,
   deleteMovieFromStore,
   setMovieWatched,
   setIsLoading,
+  setUpdateMovie,
 } from "./moviesSlice";
 
 export const createMovie = (movie) => async (dispatch) => {
@@ -44,5 +46,18 @@ export const changeWatchedMovie = (id) => async (dispatch) => {
     response = await changeWatchedMovieApi(id);
     dispatch(setMovieWatched(id));
   } catch (error) {}
+  return response;
+};
+
+export const updateMovie = (data) => async (dispatch) => {
+  let response;
+  try {
+    dispatch(setIsLoading(true));
+    response = await updateMovieToApi(data);
+    dispatch(setUpdateMovie(data));
+  } catch (error) {
+  } finally {
+    dispatch(setIsLoading(false));
+  }
   return response;
 };

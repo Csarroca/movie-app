@@ -23,9 +23,16 @@ export const moviesSlice = createSlice({
         movie.id === payload ? (movie.watched = !movie.watched) : movie.watched
       );
       state.movies.sort((movie1, movie2) => movie1.watched - movie2.watched);
+      state.movies.sort((movie1, movie2) => movie1.id - movie2.id);
     },
     setIsLoading: (state, { payload }) => {
       state.isLoading = payload;
+    },
+    setUpdateMovie: (state, { payload }) => {
+      state.movies.find((e) => e.id === payload.id)[payload.name] =
+        payload.value;
+      state.movies.sort((movie1, movie2) => movie1.id - movie2.id);
+      state.movies.sort((movie1, movie2) => movie1.watched - movie2.watched);
     },
   },
 });
@@ -35,6 +42,7 @@ export const {
   deleteMovieFromStore,
   setMovieWatched,
   setIsLoading,
+  setUpdateMovie,
 } = moviesSlice.actions;
 
 export const moviesReducer = moviesSlice.reducer;
