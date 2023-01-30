@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import Searcher from "../../components/Filter/Searcher";
+import Searcher from "../../components/Searcher/Searcher";
 import Form from "../../components/Form/Form";
 import Loader from "../../components/Loader/Loader";
 import MovieCardList from "../../components/MovieCardList/MovieCardList";
@@ -22,7 +22,7 @@ const HomePage = () => {
     <>
       <Form />
       <Searcher
-        label={"filtra por nombre de peli"}
+        label={"Filtra por nombre de peli"}
         searcher={searcher}
         search={search}
       />
