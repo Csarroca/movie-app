@@ -3,13 +3,15 @@ import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { useState } from "react";
-import { createMovie } from "../../features/movies/useApi";
+import useApi from "../../features/movies/useApi";
 import FormStyled from "./FormStyled";
 
 const Form = () => {
   const dispatch = useDispatch();
   const [selectedTags, setSelectedTags] = useState([]);
   const [inputName, setInputName] = useState("");
+
+  const { createMovie } = useApi();
 
   const addMovie = (event) => {
     event.preventDefault();
@@ -20,6 +22,7 @@ const Form = () => {
     };
     dispatch(createMovie(movie));
     setInputName("");
+    setSelectedTags([]);
   };
 
   return (
@@ -29,16 +32,18 @@ const Form = () => {
           onChange={(event) => setInputName(event.target.value)}
           value={inputName}
           name="name"
-          placeholder="Titanic"
+          placeholder="Example: Titanic
+          "
           type="text"
           required
           label={"Movie title"}
         />
 
         <TagsInput
-          placeholder="Horror"
+          placeholder="Example: Drama"
           selectedTags={selectedTags}
           setSelectedTags={setSelectedTags}
+          required
         />
 
         <Button type="submit" buttonText="Add movie" />
