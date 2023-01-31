@@ -1,35 +1,42 @@
 import Button from "../Button/Button";
-import RadioInput from "../RadioInput/RadioInput";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const RadioGroup = () => {
   const genres = ["Romance", "Comedy", "Horror"];
-
   const navigate = useNavigate();
+  const { genre } = useParams();
+
+  const handleRadio = (event) => {
+    const filteredTag = event.target.value;
+    navigate(`/genre/${filteredTag.toLowerCase()}`);
+  };
 
   return (
-    <div className="radio-group-container">
-      <div className="radio-buttons-container">
-        {genres.map((genre) => (
-          <RadioInput
-            key={genre}
-            value={genre}
-            text={genre}
-            isSelected={genre.toLocaleLowerCase() === "romance"}
-            onChange={() => {
-              navigate(`/genre=${genre.toLocaleLowerCase()}`);
-            }}
-            id={genre}
-            name={genre}
-          />
-        ))}
-      </div>
-
+    <div className="radio-container">
+      <label htmlFor="radio-group">Choose a genre </label>
+      <ul role="group" id="radio-group" className="form-radio-group">
+        {genres.map((element) => {
+          return (
+            <li key={element}>
+              <label>
+                <input
+                  onChange={handleRadio}
+                  type="radio"
+                  name="tag"
+                  value={element}
+                  checked={genre === element.toLocaleLowerCase()}
+                />
+                {element}
+              </label>
+            </li>
+          );
+        })}
+      </ul>
       <Button
         type="button"
         className="simple-button"
         buttonText="Reset"
-        handleClick={() => {
+        onClick={() => {
           navigate("/");
         }}
       />
