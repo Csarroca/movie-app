@@ -22,18 +22,18 @@ export const moviesSlice = createSlice({
       state.movies.forEach((movie) =>
         movie.id === payload ? (movie.watched = !movie.watched) : movie.watched
       );
-      state.movies.sort((movie1, movie2) => movie1.watched - movie2.watched);
       state.movies.sort((movie1, movie2) => movie1.id - movie2.id);
+      state.movies.sort((movie1, movie2) => movie1.watched - movie2.watched);
     },
     setIsLoading: (state, { payload }) => {
       state.isLoading = payload;
     },
-    setUpdateMovie: (state, { payload }) => {
-      state.movies.find((e) => e.id === payload.id)[payload.name] =
-        payload.value;
-      state.movies.sort((movie1, movie2) => movie1.id - movie2.id);
-      state.movies.sort((movie1, movie2) => movie1.watched - movie2.watched);
-    },
+    setUpdateMovie: (state, { payload }) => ({
+      ...state,
+      movies: state.movies.map((movie) =>
+        movie.id === payload.id ? payload : movie
+      ),
+    }),
   },
 });
 
