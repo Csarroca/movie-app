@@ -12,52 +12,57 @@ import {
   setUpdateMovie,
 } from "./moviesSlice";
 
-export const createMovie = (movie) => async (dispatch) => {
-  let response;
-  try {
-    dispatch(setIsLoading(true));
+const useApi = () => {
+  const createMovie = (movie) => async (dispatch) => {
+    let response;
+    try {
+      dispatch(setIsLoading(true));
 
-    response = await addMovieApi(movie);
-    dispatch(addMovieToStore(movie));
-  } catch (error) {
-  } finally {
-    dispatch(setIsLoading(false));
-  }
-  return response;
+      response = await addMovieApi(movie);
+      dispatch(addMovieToStore(movie));
+    } catch (error) {
+    } finally {
+      dispatch(setIsLoading(false));
+    }
+    return response;
+  };
+
+  const deleteMovie = (id) => async (dispatch) => {
+    let response;
+    try {
+      dispatch(setIsLoading(true));
+
+      response = await deleteMovieToApi(id);
+      dispatch(deleteMovieFromStore(id));
+    } catch (error) {
+    } finally {
+      dispatch(setIsLoading(false));
+    }
+    return response;
+  };
+
+  const changeWatchedMovie = (id) => async (dispatch) => {
+    let response;
+    try {
+      response = await changeWatchedMovieApi(id);
+      dispatch(setMovieWatched(id));
+    } catch (error) {}
+    return response;
+  };
+  const updateMovie = (movie) => async (dispatch) => {
+    let response;
+    try {
+      dispatch(setIsLoading(true));
+      response = await updateMovieToApi(movie);
+      dispatch(setUpdateMovie(movie));
+    } catch (error) {
+    } finally {
+      dispatch(setIsLoading(false));
+    }
+    return response;
+  };
+
+  return { createMovie, deleteMovie, changeWatchedMovie, updateMovie };
 };
 
-export const deleteMovie = (id) => async (dispatch) => {
-  let response;
-  try {
-    dispatch(setIsLoading(true));
-
-    response = await deleteMovieToApi(id);
-    dispatch(deleteMovieFromStore(id));
-  } catch (error) {
-  } finally {
-    dispatch(setIsLoading(false));
-  }
-  return response;
-};
-
-export const changeWatchedMovie = (id) => async (dispatch) => {
-  let response;
-  try {
-    response = await changeWatchedMovieApi(id);
-    dispatch(setMovieWatched(id));
-  } catch (error) {}
-  return response;
-};
-
-export const updateMovie = (data) => async (dispatch) => {
-  let response;
-  try {
-    dispatch(setIsLoading(true));
-    response = await updateMovieToApi(data);
-    dispatch(setUpdateMovie(data));
-  } catch (error) {
-  } finally {
-    dispatch(setIsLoading(false));
-  }
-  return response;
-};
+export default useApi;

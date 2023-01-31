@@ -4,6 +4,7 @@ import Searcher from "../../components/Searcher/Searcher";
 import Form from "../../components/Form/Form";
 import Loader from "../../components/Loader/Loader";
 import MovieCardList from "../../components/MovieCardList/MovieCardList";
+import RadioGroup from "../../components/RadioGroup/RadioGroup";
 
 const HomePage = () => {
   const { movies, isLoading } = useSelector((state) => state.movies);
@@ -22,10 +23,12 @@ const HomePage = () => {
     <>
       <Form />
       <Searcher
-        label={"Filtra por nombre de peli"}
+        label={"Filter by movie name"}
         searcher={searcher}
         search={search}
       />
+      <RadioGroup />
+
       {isLoading ? <Loader /> : <MovieCardList list={list} />}
     </>
   );
