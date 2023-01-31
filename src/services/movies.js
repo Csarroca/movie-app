@@ -14,3 +14,8 @@ export const changeWatchedMovieApi = async (id) => {
   const response = await mockApiCall(3000, id);
   return response;
 };
+
+export const updateMovieToApi = async (movie) => {
+  const response = await mockApiCall(3000, movie);
+  return response;
+};
