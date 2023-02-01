@@ -4,6 +4,7 @@ import useApi from "../../features/movies/useApi";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import MovieCardStyled from "./MovieCardStyled";
+import { FaTimesCircle, FaEdit } from "react-icons/fa";
 
 const MovieCard = ({ movie }) => {
   const dispatch = useDispatch();
@@ -76,20 +77,25 @@ const MovieCard = ({ movie }) => {
                 watched movie
               </label>
             </div>
+            <div className="Card-info__button-container">
+              <Button
+                className="delete-button"
+                buttonText={
+                  <FaTimesCircle className="card-delete" data-testid="delete" />
+                }
+                type="button"
+                onClick={handleDelete}
+              />
 
-            <Button
-              className="delete-button"
-              buttonText="delete"
-              type="button"
-              onClick={handleDelete}
-            />
-
-            <Button
-              className="save-button"
-              buttonText="edit"
-              type="button"
-              onClick={() => setOpenUpdate(true)}
-            />
+              <Button
+                className="save-button"
+                buttonText={
+                  <FaEdit className="card-delete" data-testid="delete" />
+                }
+                type="button"
+                onClick={() => setOpenUpdate(true)}
+              />
+            </div>
           </>
         )}
       </div>
