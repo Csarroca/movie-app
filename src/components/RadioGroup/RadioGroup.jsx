@@ -1,19 +1,24 @@
 import Button from "../Button/Button";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import RadioGroupStyled from "./RadioGroupStyled";
 
 const RadioGroup = () => {
   const genres = ["Romance", "Comedy", "Horror"];
   const navigate = useNavigate();
   const { genre } = useParams();
+  const location = useLocation();
+
+  const selecteedGenre =
+    location.pathname !== "/" ? genre.split("=")[1].toLowerCase() : "";
 
   const handleRadio = (event) => {
     const filteredTag = event.target.value;
-    navigate(`/genre/${filteredTag.toLowerCase()}`);
+    navigate(`/genre=${filteredTag.toLowerCase()}`);
   };
 
   return (
-    <div className="radio-container">
-      <label htmlFor="radio-group">Choose a genre </label>
+    <RadioGroupStyled>
+      <h2 className="form-radio-group__title">Choose a genre </h2>
       <ul role="group" id="radio-group" className="form-radio-group">
         {genres.map((element) => {
           return (
@@ -24,7 +29,7 @@ const RadioGroup = () => {
                   type="radio"
                   name="tag"
                   value={element}
-                  checked={genre === element.toLocaleLowerCase()}
+                  checked={selecteedGenre === element.toLocaleLowerCase()}
                 />
                 {element}
               </label>
@@ -40,7 +45,7 @@ const RadioGroup = () => {
           navigate("/");
         }}
       />
-    </div>
+    </RadioGroupStyled>
   );
 };
 
