@@ -11,9 +11,9 @@ const SearcherStyled = styled.div`
       color: ${({ theme }) => theme.colors.neutral.secundaryText};
       border: 1px solid rgba(0, 0, 0, 0.16);
       border-radius: 3px;
-      padding: 7px;
+      padding: 20px;
       font-weight: lighter;
-      font-size: 10px;
+      font-size: 14px;
     }
   }
 `;

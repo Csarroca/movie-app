@@ -6,6 +6,7 @@ const TagsInputStyled = styled.div`
   flex-direction: column;
   gap: 10px;
   font-weight: bold;
+  width: 290px;
 
   .close {
     color: ${({ theme }) => theme.colors.brand.primary};
@@ -19,16 +20,14 @@ const TagsInputStyled = styled.div`
     font-weight: lighter;
   }
   input {
-    all: unset;
     cursor: pointer;
-    width: 200px;
     color: ${({ theme }) => theme.colors.brand.primary};
-
-    padding: 5px;
+    padding: 20px;
     border: 1px solid rgba(0, 0, 0, 0.16);
     border-radius: 5%;
-    font-size: 10px;
+    font-size: 14px;
     font-weight: lighter;
+    width: 100%;
   }
 
   input[type="text"]:focus {
