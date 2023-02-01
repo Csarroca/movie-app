@@ -26,6 +26,7 @@ const HomePage = () => {
         label={"Filter by movie name"}
         searcher={searcher}
         search={search}
+        placeholder={"Example: Lord of Rings"}
       />
       <RadioGroup />
 

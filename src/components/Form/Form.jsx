@@ -27,27 +27,25 @@ const Form = () => {
 
   return (
     <FormStyled onSubmit={addMovie} className="form">
-      <div className="form-container">
-        <Input
-          onChange={(event) => setInputName(event.target.value)}
-          value={inputName}
-          name="name"
-          placeholder="Example: Titanic
+      <Input
+        onChange={(event) => setInputName(event.target.value)}
+        value={inputName}
+        name="name"
+        placeholder="Example: Titanic
           "
-          type="text"
-          required
-          label={"Movie title"}
-        />
+        type="text"
+        required
+        label={"Movie title"}
+      />
 
-        <TagsInput
-          placeholder="Example: Drama"
-          selectedTags={selectedTags}
-          setSelectedTags={setSelectedTags}
-          required
-        />
+      <TagsInput
+        placeholder="Example: Drama"
+        selectedTags={selectedTags}
+        setSelectedTags={setSelectedTags}
+        required
+      />
 
-        <Button type="submit" buttonText="Add movie" />
-      </div>
+      <Button type="submit" buttonText="Add movie" />
     </FormStyled>
   );
 };
