@@ -9,7 +9,7 @@ const FilteredPage = () => {
   const { movies, isLoading } = useSelector((state) => state.movies);
 
   const filteredList = movies.filter((movie) => {
-    return movie.genres.includes(genre.toLowerCase());
+    return movie.genres.includes(genre.split("=")[1].toLowerCase());
   });
 
   return (
