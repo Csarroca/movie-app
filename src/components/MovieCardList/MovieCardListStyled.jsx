@@ -12,6 +12,19 @@ const MovieCardListStyled = styled.div`
       width: 100%;
     }
   }
+
+  @media (min-width: 800px) {
+    .cards-list {
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      flex-wrap: wrap;
+
+      &__card {
+        width: auto;
+      }
+    }
+  }
 `;
 
 export default MovieCardListStyled;
