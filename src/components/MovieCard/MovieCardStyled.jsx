@@ -4,7 +4,7 @@ const MovieCardStyled = styled.article`
   background-color: ${({ theme }) => theme.colors.brand.tertiary};
   border-radius: 5%;
   max-width: 360px;
-
+  min-height: 360px;
   .card-info {
     gap: 8px;
     padding: 20px;
@@ -70,6 +70,9 @@ const MovieCardStyled = styled.article`
   .card-info__button-container {
     display: flex;
     gap: 150px;
+  }
+  @media (min-width: 800px) {
+    min-width: 360px;
   }
 `;
 
