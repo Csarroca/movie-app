@@ -5,6 +5,7 @@ import Form from "../../components/Form/Form";
 import Loader from "../../components/Loader/Loader";
 import MovieCardList from "../../components/MovieCardList/MovieCardList";
 import RadioGroup from "../../components/RadioGroup/RadioGroup";
+import HomePageStyled from "./HomePageSyled";
 
 const HomePage = () => {
   const { movies, isLoading } = useSelector((state) => state.movies);
@@ -20,18 +21,20 @@ const HomePage = () => {
         movie.name.toLowerCase().includes(search.toLocaleLowerCase())
       );
   return (
-    <>
-      <Form />
-      <Searcher
-        label={"Filter by movie name"}
-        searcher={searcher}
-        search={search}
-        placeholder={"Example: Lord of Rings"}
-      />
-      <RadioGroup />
+    <HomePageStyled>
+      <div className="container">
+        <Form />
+        <Searcher
+          label={"Filter by movie name"}
+          searcher={searcher}
+          search={search}
+          placeholder={"Example: Lord of Rings"}
+        />
+        <RadioGroup />
+      </div>
 
       {isLoading ? <Loader /> : <MovieCardList list={list} />}
-    </>
+    </HomePageStyled>
   );
 };
 
