@@ -45,7 +45,7 @@ const Form = () => {
         required
       />
 
-      <Button type="submit" buttonText="Add movie" />
+      <Button type="submit" buttonText="Add movie" className="button-add" />
     </FormStyled>
   );
 };

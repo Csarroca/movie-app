@@ -1,27 +1,28 @@
 import styled from "styled-components";
 
 const RadioGroupStyled = styled.div`
-  background-color: ${({ theme }) => theme.colors.brand.primary};
   padding: 1em;
   display: flex;
   flex-direction: column;
   border-radius: 25%;
   gap: 20px;
-  align-items: center;
-  align-self: center;
+  padding: 40px;
 
   .simple-button {
-    background-color: white;
-    color: ${({ theme }) => theme.colors.brand.primary};
-    font-weight: bold;
+    width: 107px;
+    margin: 0 auto;
   }
 
   .form-radio-group {
-    color: white;
-  }
+    color: ${({ theme }) => theme.colors.brand.primary};
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
-  .form-radio-group__title {
-    color: white;
+    &__title {
+      font-size: 16px;
+      color: ${({ theme }) => theme.colors.brand.primary};
+    }
   }
 `;
 
