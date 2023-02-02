@@ -10,7 +10,12 @@ const HeaderStyled = styled.header`
 
   .header-title {
     color: ${({ theme }) => theme.colors.brand.primary};
-    font-size: 2rem;
+    font-size: 2re;
+  }
+
+  @media (min-width: 800px) {
+    justify-content: center;
+    gap: 100px;
   }
 `;
 
