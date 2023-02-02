@@ -42,26 +42,35 @@ const MovieCard = ({ movie }) => {
 
             <Button
               className="save-button"
-              buttonText="edit"
+              buttonText={<FaEdit className="card-delete" />}
               type="button"
               onClick={handleEdit}
             />
           </div>
         ) : (
           <>
-            <h2 className="title">{name}</h2>
+            <h2 className="card-info__title">{name}</h2>
+            <div className="card-info__group">
+              <img
+                alt={`${name} avatar`}
+                src="/images/movie.png"
+                className="card-info__image"
+                height={150}
+                widht={150}
+              />
 
-            <ul className="card-info__genres">
-              {genres.map((genre) => {
-                return (
-                  <li className="tag" key={genre}>
-                    {genre}
-                  </li>
-                );
-              })}
-            </ul>
+              <ul className="card-info__genres">
+                {genres.map((genre) => {
+                  return (
+                    <li className="card-info__tag" key={genre}>
+                      {genre}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
 
-            <div>
+            <div className="checkbox-container">
               <input
                 id={name}
                 data-testid="checkbox"
@@ -74,26 +83,22 @@ const MovieCard = ({ movie }) => {
               />
               <span />
               <label htmlFor={name} className="checkbox-label">
-                watched movie
+                Watched
               </label>
             </div>
-            <div className="Card-info__button-container">
+            <div className="card-info__button-container">
               <Button
-                className="delete-button"
-                buttonText={
-                  <FaTimesCircle className="card-delete" data-testid="delete" />
-                }
+                className="save-button"
+                buttonText={<FaEdit className="card-delete" />}
                 type="button"
-                onClick={handleDelete}
+                onClick={() => setOpenUpdate(true)}
               />
 
               <Button
-                className="save-button"
-                buttonText={
-                  <FaEdit className="card-delete" data-testid="delete" />
-                }
+                className="delete-button"
+                buttonText={<FaTimesCircle className="card-delete" />}
                 type="button"
-                onClick={() => setOpenUpdate(true)}
+                onClick={handleDelete}
               />
             </div>
           </>
