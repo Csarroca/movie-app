@@ -10,7 +10,6 @@ const RadioGroupStyled = styled.div`
 
   .simple-button {
     width: 107px;
-    margin: 0 auto;
   }
 
   .form-radio-group {
