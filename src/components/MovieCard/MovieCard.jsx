@@ -4,6 +4,7 @@ import useApi from "../../features/movies/useApi";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import MovieCardStyled from "./MovieCardStyled";
+import { FaTimesCircle, FaEdit } from "react-icons/fa";
 
 const MovieCard = ({ movie }) => {
   const dispatch = useDispatch();
@@ -41,26 +42,35 @@ const MovieCard = ({ movie }) => {
 
             <Button
               className="save-button"
-              buttonText="edit"
+              buttonText={<FaEdit className="card-delete" />}
               type="button"
               onClick={handleEdit}
             />
           </div>
         ) : (
           <>
-            <h2 className="title">{name}</h2>
+            <h2 className="card-info__title">{name}</h2>
+            <div className="card-info__group">
+              <img
+                alt={`${name} avatar`}
+                src="/images/movie.png"
+                className="card-info__image"
+                height={150}
+                widht={150}
+              />
 
-            <ul className="card-info__genres">
-              {genres.map((genre) => {
-                return (
-                  <li className="tag" key={genre}>
-                    {genre}
-                  </li>
-                );
-              })}
-            </ul>
+              <ul className="card-info__genres">
+                {genres.map((genre) => {
+                  return (
+                    <li className="card-info__tag" key={genre}>
+                      {genre}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
 
-            <div>
+            <div className="checkbox-container">
               <input
                 id={name}
                 data-testid="checkbox"
@@ -73,23 +83,24 @@ const MovieCard = ({ movie }) => {
               />
               <span />
               <label htmlFor={name} className="checkbox-label">
-                watched movie
+                Watched
               </label>
             </div>
+            <div className="card-info__button-container">
+              <Button
+                className="save-button"
+                buttonText={<FaEdit className="card-delete" />}
+                type="button"
+                onClick={() => setOpenUpdate(true)}
+              />
 
-            <Button
-              className="delete-button"
-              buttonText="delete"
-              type="button"
-              onClick={handleDelete}
-            />
-
-            <Button
-              className="save-button"
-              buttonText="edit"
-              type="button"
-              onClick={() => setOpenUpdate(true)}
-            />
+              <Button
+                className="delete-button"
+                buttonText={<FaTimesCircle className="card-delete" />}
+                type="button"
+                onClick={handleDelete}
+              />
+            </div>
           </>
         )}
       </div>

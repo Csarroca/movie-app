@@ -3,7 +3,9 @@ const styles = {
     brand: {
       primary: "#3a61b6",
       secundary: "#104681 ",
+      tertiary: "rgba(175, 201, 225, 0.468)",
     },
+
     neutral: {
       primaryText: "#17202A",
       secundaryText: "#797D7F ",
