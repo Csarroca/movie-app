@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { useState } from "react";
-import useApi from "../../features/movies/useApi";
+import useApi from "../../store/features/movies/useApi";
 import FormStyled from "./FormStyled";
 
 const Form = () => {
