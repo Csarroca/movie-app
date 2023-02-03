@@ -10,6 +10,7 @@ const RadioGroupStyled = styled.div`
 
   .simple-button {
     width: 107px;
+    margin: 0 auto;
   }
 
   .form-radio-group {
@@ -18,10 +19,20 @@ const RadioGroupStyled = styled.div`
     flex-direction: column;
     gap: 20px;
 
+    @media (min-width: 800px) {
+      gap: 40px;
+    }
+
     &__title {
       font-size: 16px;
       color: ${({ theme }) => theme.colors.brand.primary};
     }
+  }
+
+  @media (min-width: 800px) {
+    padding: 0;
+    height: 292px;
+    justify-content: space-between;
   }
 `;
 
