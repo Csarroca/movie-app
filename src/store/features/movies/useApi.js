@@ -1,9 +1,9 @@
 import {
   addMovieApi,
   changeWatchedMovieApi,
-  deleteMovieToApi,
-  updateMovieToApi,
-} from "../../services/movies";
+  deleteMovieApi,
+  updateMovieApi,
+} from "../../../services/movies";
 import {
   addMovieToStore,
   deleteMovieFromStore,
@@ -32,7 +32,7 @@ const useApi = () => {
     try {
       dispatch(setIsLoading(true));
 
-      response = await deleteMovieToApi(id);
+      response = await deleteMovieApi(id);
       dispatch(deleteMovieFromStore(id));
     } catch (error) {
     } finally {
@@ -59,7 +59,7 @@ const useApi = () => {
     let response;
     try {
       dispatch(setIsLoading(true));
-      response = await updateMovieToApi(movie);
+      response = await updateMovieApi(movie);
       dispatch(setUpdateMovie(movie));
     } catch (error) {
     } finally {
