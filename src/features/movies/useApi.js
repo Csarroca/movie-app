@@ -44,9 +44,15 @@ const useApi = () => {
   const changeWatchedMovie = (id) => async (dispatch) => {
     let response;
     try {
+      dispatch(setIsLoading(true));
+
       response = await changeWatchedMovieApi(id);
       dispatch(setMovieWatched(id));
-    } catch (error) {}
+    } catch (error) {
+    } finally {
+      dispatch(setIsLoading(false));
+    }
+
     return response;
   };
   const updateMovie = (movie) => async (dispatch) => {
