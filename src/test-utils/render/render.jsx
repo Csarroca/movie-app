@@ -1,11 +1,15 @@
-import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import styles from "../../styles/styles";
+import React from "react";
+import { render as rtlRender } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../store/store";
 
-export const Wrapper = ({ children }) => {
-  return (
-    <ThemeProvider theme={styles}>
-      <BrowserRouter>{children}</BrowserRouter>
-    </ThemeProvider>
+const render = (ui, renderOptions = {}) => {
+  const Wrapper = ({ children }) => (
+    <Provider store={store}>{children}</Provider>
   );
+  return { ...rtlRender(ui, { wrapper: Wrapper, ...renderOptions }) };
 };
+
+export * from "@testing-library/react";
+
+export { render };
