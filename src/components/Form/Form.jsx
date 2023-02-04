@@ -1,5 +1,4 @@
 import TagsInput from "../TagsInput/TagsInput";
-import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { useState } from "react";
@@ -7,7 +6,6 @@ import useApi from "../../store/features/movies/useApi";
 import FormStyled from "./FormStyled";
 
 const Form = () => {
-  const dispatch = useDispatch();
   const [selectedTags, setSelectedTags] = useState([]);
   const [inputName, setInputName] = useState("");
 
@@ -20,7 +18,7 @@ const Form = () => {
       genres: selectedTags,
       watched: false,
     };
-    dispatch(createMovie(movie));
+    createMovie(movie);
     setInputName("");
     setSelectedTags([]);
   };
