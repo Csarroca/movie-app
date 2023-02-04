@@ -3,7 +3,7 @@ import Button from "./Button";
 import userEvent from "@testing-library/user-event";
 import { Wrapper } from "../../test-utils/Wrapper/Wrapper";
 
-describe("Given a AnimatedButton component", () => {
+describe("Given a Button component", () => {
   describe("When instantiated with onClick", () => {
     test("Then it should perform action on click", async () => {
       const onClick = jest.fn();
