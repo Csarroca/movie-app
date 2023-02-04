@@ -10,7 +10,7 @@ const MovieCard = ({ movie }) => {
   const dispatch = useDispatch();
   const [openUpdate, setOpenUpdate] = useState(false);
   const { deleteMovie, changeWatchedMovie, updateMovie } = useApi();
-  const { name, genres, watched, id } = movie;
+  const { name, genres, watched, id, picture = "/images/movie.png" } = movie;
 
   const [inputValue, setInputValue] = useState(movie.name);
 
@@ -53,7 +53,7 @@ const MovieCard = ({ movie }) => {
             <div className="card-info__group">
               <img
                 alt={`${name} avatar`}
-                src="/images/movie.png"
+                src={picture}
                 className="card-info__image"
                 height={150}
                 widht={150}
