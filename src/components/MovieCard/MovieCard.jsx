@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import useApi from "../../store/features/movies/useApi";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
@@ -7,7 +6,6 @@ import MovieCardStyled from "./MovieCardStyled";
 import { FaTimesCircle, FaEdit } from "react-icons/fa";
 
 const MovieCard = ({ movie }) => {
-  const dispatch = useDispatch();
   const [openUpdate, setOpenUpdate] = useState(false);
   const { deleteMovie, changeWatchedMovie, updateMovie } = useApi();
   const { name, genres, watched, id, picture = "/images/movie.png" } = movie;
@@ -15,17 +13,17 @@ const MovieCard = ({ movie }) => {
   const [inputValue, setInputValue] = useState(movie.name);
 
   const toggleWhatched = () => {
-    dispatch(changeWatchedMovie(id));
+    changeWatchedMovie(id);
   };
 
   const handleDelete = (event) => {
     event.preventDefault();
 
-    dispatch(deleteMovie(id));
+    deleteMovie(id);
   };
 
   const handleEdit = () => {
-    dispatch(updateMovie({ ...movie, name: inputValue }));
+    updateMovie({ ...movie, name: inputValue });
     setOpenUpdate(false);
   };
   return (
@@ -96,9 +94,16 @@ const MovieCard = ({ movie }) => {
 
               <Button
                 className="delete-button"
-                buttonText={<FaTimesCircle className="card-delete" />}
+                buttonText={
+                  <FaTimesCircle
+                    className="card-delete"
+                    data-testid="delete-button"
+                  />
+                }
                 type="button"
                 onClick={handleDelete}
+                data-testid="delete-button"
+                name={"delete-button"}
               />
             </div>
           </>

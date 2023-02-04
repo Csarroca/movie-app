@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import {
   addMovieApi,
   changeWatchedMovieApi,
@@ -13,7 +14,8 @@ import {
 } from "./moviesSlice";
 
 const useApi = () => {
-  const createMovie = (movie) => async (dispatch) => {
+  const dispatch = useDispatch();
+  const createMovie = async (movie) => {
     let response;
     try {
       dispatch(setIsLoading(true));
@@ -27,7 +29,7 @@ const useApi = () => {
     return response;
   };
 
-  const deleteMovie = (id) => async (dispatch) => {
+  const deleteMovie = async (id) => {
     let response;
     try {
       dispatch(setIsLoading(true));
@@ -41,7 +43,7 @@ const useApi = () => {
     return response;
   };
 
-  const changeWatchedMovie = (id) => async (dispatch) => {
+  const changeWatchedMovie = async (id) => {
     let response;
     try {
       dispatch(setIsLoading(true));
@@ -55,7 +57,7 @@ const useApi = () => {
 
     return response;
   };
-  const updateMovie = (movie) => async (dispatch) => {
+  const updateMovie = async (movie) => {
     let response;
     try {
       dispatch(setIsLoading(true));
