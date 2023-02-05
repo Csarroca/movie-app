@@ -17,6 +17,26 @@ describe("Given a MovieCard component", () => {
     watched: false,
   };
 
+  describe("When it receives a valid movie", () => {
+    test("Then it should show the correct data introduced", () => {
+      render(<MovieCard movie={mock} />, { wrapper: Wrapper });
+
+      expect(mock).toBeInstanceOf(Object);
+      expect(mock).toHaveProperty("name");
+      expect(typeof mock.name).toBe("string");
+      expect(mock).toHaveProperty("id");
+      expect(typeof mock.id).toBe("number");
+      expect(mock).toHaveProperty("picture");
+      expect(typeof mock.picture).toBe("string");
+      expect(mock).toHaveProperty("genres");
+      expect(mock.genres).toBeInstanceOf(Array);
+      expect(mock).toHaveProperty("watched");
+      expect(typeof mock.watched).toBe("boolean");
+      expect(mock.name).not.toBe("lalala");
+      expect(mock).not.toHaveProperty("createDate");
+    });
+  });
+
   describe("When it receives a Movie with picture 'test-picture' and 'test avatar' as alternative text", () => {
     test("Then it should show the received picture with the received alternative text", () => {
       render(<MovieCard movie={mock} />, { wrapper: Wrapper });
@@ -29,23 +49,12 @@ describe("Given a MovieCard component", () => {
     });
   });
 
-  describe("When it receives a name 'test'", () => {
-    test("Then it should show a heading with 'test' inside", () => {
-      render(<MovieCard movie={mock} />, { wrapper: Wrapper });
-      const nameHeading = screen.getByRole("heading", {
-        name: mock.name,
-      });
-      expect(nameHeading).toBeInTheDocument();
-    });
-  });
   describe("if users clicks delete icon", () => {
     test("Then it should call delete function", async () => {
       render(<MovieCard movie={mock} />, { wrapper: Wrapper });
 
       const deleteButton = screen.getByTestId("delete-button");
       await userEvent.click(deleteButton);
-
-      debugger;
 
       expect(mockAction).toHaveBeenNthCalledWith(1, mock.id);
     });

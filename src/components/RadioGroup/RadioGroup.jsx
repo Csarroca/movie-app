@@ -9,7 +9,7 @@ const RadioGroup = () => {
   const location = useLocation();
 
   const selecteedGenre =
-    location.pathname !== "/" ? genre.split("=")[1].toLowerCase() : "";
+    location.pathname !== "/" ? genre?.split("=")[1].toLowerCase() : "";
 
   const handleRadio = (event) => {
     const filteredTag = event.target.value;
