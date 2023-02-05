@@ -11,6 +11,7 @@ import {
   setMovieWatched,
   setIsLoading,
   setUpdateMovie,
+  setError,
 } from "./moviesSlice";
 
 const useApi = () => {
@@ -23,6 +24,7 @@ const useApi = () => {
       response = await addMovieApi(movie);
       dispatch(addMovieToStore(movie));
     } catch (error) {
+      dispatch(setError(error.message));
     } finally {
       dispatch(setIsLoading(false));
     }
@@ -37,6 +39,7 @@ const useApi = () => {
       response = await deleteMovieApi(id);
       dispatch(deleteMovieFromStore(id));
     } catch (error) {
+      dispatch(setError(error.message));
     } finally {
       dispatch(setIsLoading(false));
     }
@@ -51,6 +54,7 @@ const useApi = () => {
       response = await changeWatchedMovieApi(id);
       dispatch(setMovieWatched(id));
     } catch (error) {
+      dispatch(setError(error.message));
     } finally {
       dispatch(setIsLoading(false));
     }
@@ -64,6 +68,7 @@ const useApi = () => {
       response = await updateMovieApi(movie);
       dispatch(setUpdateMovie(movie));
     } catch (error) {
+      dispatch(setError(error.message));
     } finally {
       dispatch(setIsLoading(false));
     }
