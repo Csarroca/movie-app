@@ -45,8 +45,6 @@ describe("Given a MovieCard component", () => {
       const deleteButton = screen.getByTestId("delete-button");
       await userEvent.click(deleteButton);
 
-      debugger;
-
       expect(mockAction).toHaveBeenNthCalledWith(1, mock.id);
     });
   });
