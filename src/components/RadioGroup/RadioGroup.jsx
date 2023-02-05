@@ -1,12 +1,20 @@
 import Button from "../Button/Button";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import RadioGroupStyled from "./RadioGroupStyled";
+import { useEffect } from "react";
 
-const RadioGroup = () => {
+const RadioGroup = ({ setIsLoading = () => {}, isLoading }) => {
   const genres = ["Romance", "Comedy", "Horror"];
   const navigate = useNavigate();
   const { genre } = useParams();
   const location = useLocation();
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, [setIsLoading, genre]);
 
   const selecteedGenre =
     location.pathname !== "/" ? genre?.split("=")[1].toLowerCase() : "";
