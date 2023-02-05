@@ -5,7 +5,7 @@ import Input from "../Input/Input";
 import MovieCardStyled from "./MovieCardStyled";
 import { FaTimesCircle, FaEdit } from "react-icons/fa";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie = {} }) => {
   const [openUpdate, setOpenUpdate] = useState(false);
   const { deleteMovie, changeWatchedMovie, updateMovie } = useApi();
   const { name, genres, watched, id, picture = "/images/movie.png" } = movie;
