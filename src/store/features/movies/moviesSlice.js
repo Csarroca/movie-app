@@ -34,6 +34,10 @@ export const moviesSlice = createSlice({
         movie.id === payload.id ? payload : movie
       ),
     }),
+
+    setError: (state, { payload }) => {
+      state.error = payload;
+    },
   },
 });
 
@@ -43,6 +47,7 @@ export const {
   setMovieWatched,
   setIsLoading,
   setUpdateMovie,
+  setError,
 } = moviesSlice.actions;
 
 export const moviesReducer = moviesSlice.reducer;
